@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/styles.css">
+	<link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/hover.css">
+	<link href='https://fonts.googleapis.com/css?family=The+Girl+Next+Door' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Nova+Mono' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/buttons.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+
+	<script type="text/javascript">
+	function toSpans(span) {
+	  var str=span.firstChild.data;
+	  var a=str.length;
+	  span.removeChild(span.firstChild);
+	  for(var i=0; i<a; i++) {
+	    var theSpan=document.createElement("SPAN");
+	    theSpan.appendChild(document.createTextNode(str.charAt(i)));
+	    span.appendChild(theSpan);
+	  }
+	}
+	function RainbowSpan(span, hue, deg, brt, spd, hspd) {
+	    this.deg=(deg==null?360:Math.abs(deg));
+	    this.hue=(hue==null?0:Math.abs(hue)%360);
+	    this.hspd=(hspd==null?3:Math.abs(hspd)%360);
+	    this.length=span.firstChild.data.length;
+	    this.span=span;
+	    this.speed=(spd==null?50:Math.abs(spd));
+	    this.hInc=this.deg/this.length;
+	    this.brt=(brt==null?255:Math.abs(brt)%256);
+	    this.timer=null;
+	    toSpans(span);
+	    this.moveRainbow();
+	}
+	RainbowSpan.prototype.moveRainbow = function() {
+	  if(this.hue>359) this.hue-=360;
+	  var color;
+	  var b=this.brt;
+	  var a=this.length;
+	  var h=this.hue;
+
+	  for(var i=0; i<a; i++) {
+
+	    if(h>359) h-=360;
+
+	    if(h<60) { color=Math.floor(((h)/60)*b); red=b;grn=color;blu=0; }
+	    else if(h<120) { color=Math.floor(((h-60)/60)*b); red=b-color;grn=b;blu=0; }
+	    else if(h<180) { color=Math.floor(((h-120)/60)*b); red=0;grn=b;blu=color; }
+	    else if(h<240) { color=Math.floor(((h-180)/60)*b); red=0;grn=b-color;blu=b; }
+	    else if(h<300) { color=Math.floor(((h-240)/60)*b); red=color;grn=0;blu=b; }
+	    else { color=Math.floor(((h-300)/60)*b); red=b;grn=0;blu=b-color; }
+
+	    h+=this.hInc;
+
+	    this.span.childNodes[i].style.color="rgb("+red+", "+grn+", "+blu+")";
+	  }
+	  this.hue+=this.hspd;
+	}
+	</script>
+
+	<script type="text/javascript">
+	// <![CDATA[
+	var colour="random"; // in addition to "random" can be set to any valid colour eg "#f0f" or "red"
+	var sparkles=50;
+
+
+
+	/****************************
+	* Tinkerbell Magic Sparkle *
+	*(c)2005-11 mf2fm web-design*
+	* http://www.mf2fm.com/rv *
+	* DON'T EDIT BELOW THIS BOX *
+	****************************/
+
+	var x=ox=400;
+	var y=oy=300;
+	var swide=800;
+	var shigh=600;
+	var sleft=sdown=0;
+	var tiny=new Array();
+	var star=new Array();
+	var starv=new Array();
+	var starx=new Array();
+	var stary=new Array();
+	var tinyx=new Array();
+	var tinyy=new Array();
+	var tinyv=new Array();
+
+	window.onload=function() { if (document.getElementById) {
+	var i, rats, rlef, rdow;
+	for (var i=0; i<sparkles; i++) {
+	var rats=createDiv(3, 3);
+	rats.style.visibility="hidden";
+	document.body.appendChild(tiny[i]=rats);
+	starv[i]=0;
+	tinyv[i]=0;
+	var rats=createDiv(5, 5);
+	rats.style.backgroundColor="transparent";
+	rats.style.visibility="hidden";
+	var rlef=createDiv(1, 5);
+	var rdow=createDiv(5, 1);
+	rats.appendChild(rlef);
+	rats.appendChild(rdow);
+	rlef.style.top="2px";
+	rlef.style.left="0px";
+	rdow.style.top="0px";
+	rdow.style.left="2px";
+	document.body.appendChild(star[i]=rats);
+	}
+
+	set_width();
+	sparkle();
+	}}
+
+	function sparkle() {
+	var c;
+	if (x!=ox || y!=oy) {
+	ox=x;
+	oy=y;
+	for (c=0; c<sparkles; c++) if (!starv[c]) {
+	star[c].style.left=(starx[c]=x)+"px";
+	star[c].style.top=(stary[c]=y)+"px";
+	star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+	star[c].childNodes[0].style.backgroundColor=star[c].childNodes[1].style.backgroundColor=(colour=="random")?newColour():colour;
+
+	star[c].style.visibility="visible";
+	starv[c]=50;
+	break;
+	}
+	}
+	for (c=0; c<sparkles; c++) {
+	if (starv[c]) update_star(c);
+	if (tinyv[c]) update_tiny(c);
+	}
+	setTimeout("sparkle()", 40);
+	}
+
+
+
+	function update_star(i) {
+	if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+	if (starv[i]) {
+	stary[i]+=1+Math.random()*3;
+	if (stary[i]<shigh+sdown && starx[i]>0) {
+	star[i].style.top=stary[i]+"px";
+	starx[i]+=(i%5-2)/5;
+	star[i].style.left=starx[i]+"px";
+	}
+	else {
+	star[i].style.visibility="hidden";
+	starv[i]=0;
+	return;
+	}
+	}
+
+	else {
+	tinyv[i]=50;
+	tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+	tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+	tiny[i].style.width="2px";
+	tiny[i].style.height="2px";
+	tiny[i].style.backgroundColor=star[i].childNodes[0].style.backgroundColor;
+	star[i].style.visibility="hidden";
+	tiny[i].style.visibility="visible"
+	}
+	}
+
+	function update_tiny(i) {
+	if (--tinyv[i]==25) {
+	tiny[i].style.width="1px";
+	tiny[i].style.height="1px";
+	}
+
+	if (tinyv[i]) {
+	tinyy[i]+=1+Math.random()*3;
+	if (tinyy[i]<shigh+sdown && tinyx[i]>0) {
+	tiny[i].style.top=tinyy[i]+"px";
+	tinyx[i]+=(i%5-2)/5;
+	tiny[i].style.left=tinyx[i]+"px";
+	}
+
+	else {
+	tiny[i].style.visibility="hidden";
+	tinyv[i]=0;
+	return;
+	}
+	}
+	else tiny[i].style.visibility="hidden";
+	}
+
+	document.onmousemove=mouse;
+	function mouse(e) {
+	set_scroll();
+	y=(e)?e.pageY:event.y+sdown;
+	x=(e)?e.pageX:event.x+sleft;
+	}
+
+	function set_scroll() {
+	if (typeof(self.pageYOffset)=="number") {
+	sdown=self.pageYOffset;
+	sleft=self.pageXOffset;
+	}
+	else if (document.body.scrollTop || document.body.scrollLeft) {
+	sdown=document.body.scrollTop;
+	sleft=document.body.scrollLeft;
+	}
+	else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+	sleft=document.documentElement.scrollLeft;
+	sdown=document.documentElement.scrollTop;
+	}
+	else {
+	sdown=0;
+	sleft=0;
+	}
+	}
+
+	window.onresize=set_width;
+	function set_width() {
+	if (typeof(self.innerWidth)=="number") {
+	swide=self.innerWidth;
+	shigh=self.innerHeight;
+	}
+
+	else if (document.documentElement && document.documentElement.clientWidth) {
+	swide=document.documentElement.clientWidth;
+	shigh=document.documentElement.clientHeight;
+	}
+
+	else if (document.body.clientWidth) {
+	swide=document.body.clientWidth;
+	shigh=document.body.clientHeight;
+	}
+	}
+
+	function createDiv(height, width) {
+	var div=document.createElement("div");
+	div.style.position="absolute";
+	div.style.height=height+"px";
+	div.style.width=width+"px";
+	div.style.overflow="hidden";
+	return (div);
+	}
+
+	function newColour() {
+	var c=new Array();
+	c[0]=255;
+	c[1]=Math.floor(Math.random()*256);
+	c[2]=Math.floor(Math.random()*(256-c[1]/2));
+	c.sort(function(){return (0.5 - Math.random());});
+	return ("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
+	}
+
+	// ]]>
+	</script>
+	
+</head>
+
+
+
+<body>
+
+<div class="wrapper">
+	<div class="heading">
+
+		<div class="maintitle">
+			<h1><img src="images/kat.gif" height="50px" alt="man dancing">
+
+	<h3* id="r1">ネコちゃん</h3>*
+</div>
+
+<script type="text/javascript">
+var r1=document.getElementById("r1"); //get span to apply rainbow
+var myRainbowSpan=new RainbowSpan(r1, 0, 360, 255, 50, 18); //apply static rainbow effect
+myRainbowSpan.timer=window.setInterval("myRainbowSpan.moveRainbow()", myRainbowSpan.speed);
+</script>
+
+
+		</div>
+
+	<nav>
+
+  	  <a href="#about">
+      	<button class="rad-button light flat">
+     	 about
+     	 </button></a>
+  
+
+      <button class="rad-button light flat">
+    	  <a href="#ed_ex">edu & edx
+		</button></a>
+  
+      <button class="rad-button light flat">
+      <a href="#contact">contact
+  	</button></a>
+
+
+  		<ul>
+			<li><a href="#about" class="hvr-grow">about</a></li>
+			<li><a href="#ed_ex" class="hvr-grow">edu & exp</a></li>
+			<li><a href="#contact" class="hvr-grow">contact</a></li>
+		</ul>
+
+
+    </nav>
+
+
+
+	</div> <!-- end heading -->
+	
+	<section id="about">
+	<div class="profile">
+
+		<div class="rightprofile">
+	
+		
+				<div class="about">
+					<h1><i>Hello I'm Totoro!<br>
+					 こんにちはイムトトロ</i></h1>
+					<h2>Web Developer (ᵔᴥᵔ)</h2>
+					<p>となりのトとなりのトトロ』は、スタジオジブリ制作の日本の長編アニメーション作品。昭和30年代前半の日本を舞台にしたファンタジー。田舎へ引っ越してきた草壁一家のサツキ、メイ姉妹と、“もののけ”とよばれる不思議な生き物「トトロ」との交流を描く
+				</div>
+	
+
+		</div>
+
+		<div class="leftprofile">
+			<img src="http://www.tenvinilo.com/vinilos-decorativos/img/preview/vinilo-portatil-dibujo-totoro-7186.png" alt="">	
+		</div>
+
+
+	</div> <!-- end profile -->
+		</section>
+		<div class="likesdislikes">
+
+			<div class="likes">
+				<h2>likes // 好き</h2>
+				<img src="images/bowl.gif" width="80px" alt="">
+				<img src="http://orig08.deviantart.net/67c1/f/2013/282/a/5/pixel_trees_v2___serene_nature_by_pix3m-d6prljn.gif" width="80px" alt="">
+				<img src="http://25.media.tumblr.com/576a97430f171edb400d78616dcd6cad/tumblr_mvropuI9WX1rykl1uo1_400.gif" width="80px" alt="">
+				<img src="http://data.whicdn.com/images/37825560/large.gif" width="80px" alt="">
+
+
+				<img src="http://rs858.pbsrc.com/albums/ab148/SuperNyappyOfLove/Kawaii%20Stuff/Pixels/038.gif~c200" width="60px" alt="">
+				<img src="http://38.media.tumblr.com/06ee0ba1b309bdeeba32b540c14f2d5e/tumblr_inline_ndsetsfJ2P1rujz3w.gif" width="90px" alt="">
+				<img src="http://25.media.tumblr.com/tumblr_maw6dnldZw1rfjowdo1_250.gif" width="90px" alt="">
+				<img src="images/sun.png" width="67px" alt="">
+
+
+				<img src="https://media.giphy.com/media/rl9eZyKof8heE/giphy.gif" width="70px" alt="">
+				<img src="http://orig13.deviantart.net/2444/f/2014/040/7/6/the_legend_of_spyro_animated_by_radspyro-d75sq8m.gif" width="80px" alt="">
+				<img src="https://33.media.tumblr.com/ef9ece5dcecb9e2fc974ff6f65cf9d1e/tumblr_mit6o1qvif1rfjowdo1_500.gif" width="90px" alt="">
+				<img src="http://45.media.tumblr.com/tumblr_ma3kd5NOs01rfjowdo1_500.gif" width="80px" alt="">
+			</div>
+			<div class="dislikes">
+				<h2>dislikes // 嫌い</h2>
+<p>
+				<img src="https://media.giphy.com/media/ah7KwjMNJlhtK/giphy.gif" width="90px" alt="">
+				<img src="http://orig00.deviantart.net/fb47/f/2014/264/2/6/panzer_iv_thing_by_rhopunzel-d7zqeim.gif" width="90px" alt="">
+				<img src="http://orig01.deviantart.net/fa9a/f/2008/281/d/e/crazy_clown_by_pixeldix.gif" width="70px" alt="">
+				<img src="http://bestanimations.com/Animals/Insects/Spiders/spider-animated-gif-3.gif" width="90px" alt="">
+
+				
+				<img src="http://25.media.tumblr.com/tumblr_mc0otzjZAM1r1rrxzo1_500.gif" width="90px" alt="">
+				<img src="images/coffee.png" width="90px" alt="">
+				
+				<img src="http://www.anglaisfacile.com/cgi2/myexam/images/13604.gif" width="90px" alt="">
+				<img src="http://orig15.deviantart.net/d453/f/2015/293/3/0/pixel_witch_animation_by_impuuuu-d9dqqgn.gif" width="60px" alt="">
+		
+
+				<img src="http://piq.codeus.net/static/media/userpics/piq_66457_400x400.png" width="70px" alt="">
+
+				<img src="https://media.giphy.com/media/xTiTnI3QKUIHBRre92/giphy.gif" width="70px" alt="">
+
+				<img src="https://lh3.googleusercontent.com/E9fVrwFNcCEdLa5pchMGTmNdrf3B_69Alo9_YkqteyLyRcQmQqTOkmLG3dHYCAIa_T3S=w170" width="70px" alt="">
+
+			
+				<img src="http://45.media.tumblr.com/0cdce70a0427c6f899c5f85cb303451c/tumblr_n9j2gxWen21rf2e28o1_500.gif" width="90x" alt="">
+			</p>
+			</div>
+		</div>
+
+
+	<div class="quote">
+		<div class="quoteimg">
+			<img src="images/luna.png" alt="">
+		</div>
+		<p><i>"totoro's coding skills are astonishing<br> for an fictional anime character"</i> - luna
+		</p>
+
+	</div> <!-- end quote -->
+
+	<section id="ed_ex"></section>
+	<div class="ed_ex">
+		<div class="education">
+			<h2>education // 教育<br><br></h2>
+			<p><b>Magic Forest University</b></p>
+			<p>major: space magic</p>
+			<p>minor: accounting</p>
+			<p>2004-2007</p>
+
+
+			<br>
+
+			<p><b>Yoobee School of Design</b></p>
+			<p>front end web development</p>
+			<p> 2.5 months
+
+		</div>
+		<div class="experience">	
+			<h2>experience // 経験<br><br></h2>
+			<p><b>Apple Inc &#63743;</b></p>
+			<p>interface designer</p>
+			siri engineer
+			<p>2010-2016</p>
+<br>
+			<p><b>Internet Explorer Amusement Park</b></p>
+			<p>popcorn guy</p>
+			<p>2 years</p>
+
+		</div>
+	</div>
+
+	<section id="contact"></a>
+	<div class="instagram">
+
+		<p>
+		<i>
+		call me ....
+		<a href="tel:+1800229933">02102522950</a><br>
+		or email ... 
+		<a href="mailto:arikatsoulis@gmail.com">totoro@icloud.com</a>
+		</i>
+		</p>
+		
+
+				<h2>follow me on insta</h2>
+				<h1><a class="hvr-bounce-in" href="http://instagram.com/totoro">@totoro</a></h1>
+				
+
+	</div>
+</div> <!-- end wrapper -->
+</body>
+</html>

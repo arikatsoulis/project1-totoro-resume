@@ -1,0 +1,503 @@
+/*---------------body-------------------------*/
+
+
+body{
+	margin: 0;
+	padding:0;
+	font-family: 'Roboto Mono';
+	background-image: url("http://38.media.tumblr.com/abedb2cd56a31c3cce5e98777f983ffe/tumblr_inline_mwbs2sCNxB1qkc0d3.png");
+
+}
+
+a{	text-decoration: none;
+}
+.wrapper{background-image: url("http://38.media.tumblr.com/abedb2cd56a31c3cce5e98777f983ffe/tumblr_inline_mwbs2sCNxB1qkc0d3.png");
+}
+
+.frontpage{
+	width:100%;
+	height:100%
+}
+
+body, a:hover {cursor: url(http://cur.cursors-4u.net/games/gam-10/gam948.ani), url(http://cur.cursors-4u.net/games/gam-10/gam948.png), progress !important;} /* End http://www.cursors-4u.com *//*---------------heading----------------------*/
+
+.heading{
+	width:100%;
+	padding:.001em;
+	background-image: url("http://38.media.tumblr.com/abedb2cd56a31c3cce5e98777f983ffe/tumblr_inline_mwbs2sCNxB1qkc0d3.png");
+
+}
+
+#contact, .instagram {
+	padding:.001em;
+}
+.title{
+	width: 99%;
+	height: 100%;
+	background color: transparent;
+	min-height: 60px;
+	margin: 0 auto;
+	margin-top: -20px;
+	padding: 5px 0px 5px 0px;
+	line-height: 40px;
+	font-family: arial;
+}
+
+.maintitle:img{
+	padding-top: 0px;
+}
+
+.maintitle h1{
+	text-align: center;
+	font-size: 3em;
+	color: white;
+}
+
+.maintitle h2{
+	text-align: right;
+	font-size: 3em;
+}
+
+
+}
+
+/*---------------navigation-------------------*/
+
+.fonts i{
+	color: red;
+
+}
+
+
+button{
+	display: none;
+}
+
+nav ul {
+	padding:0;
+	margin:0 auto;
+	max-width:1000px;
+	font-size: 1.3em;
+}
+
+nav ul li {
+	text-transform: uppercase;
+	border-style: solid;
+	border-color: black;
+	list-style:none;
+	margin: 0 auto;
+	margin-top: 5px;	
+	background:white;
+	color: black;
+	width: 100%;
+	text-align:center;
+}
+
+
+nav ul li:hover {
+	transition:all .5s ease-in-out;
+}
+
+nav ul li a {
+	width:100%;
+	padding:0em;
+	display:block;
+
+}
+
+
+.clearfix:after {
+	content:".";
+	display:block;
+	height: 0;
+	clear:both;
+	visibility:hidden;
+}
+
+
+/*---------------profile section------------*/
+
+
+.profile{
+	background-color:#fdb4b5;
+	color:black;
+	}
+
+.leftprofile{
+	padding: 0px;
+	width: 100%;
+	margin bottom: 10px;
+	}
+
+.leftprofile img{
+	padding: 0px;
+	width: 100%;
+	margin: 0 auto;
+	}
+
+.rightprofile{
+	width:100%;
+	color: white;
+	padding: 0; 
+	background-color: transparent;
+	min-height: 100px;
+	}
+
+.rightprofile h1{
+	font-size: 1.4em;
+}
+
+.rightprofile h2{
+	font-size: .8em;
+}
+
+.rightprofile p{
+	font-size: .7em;
+}
+
+.about{width: 90%;
+	background-color: transparent;
+	padding: 0px 15px 0px 15px;
+	font-size: 1.5em;
+	}
+
+.about h1{
+	font-size: 1.3em;
+	color: black;
+	text-shadow: 2px 2px white;
+}
+
+.about h2{
+	color: black;
+}
+
+.about p{color: black;}
+
+.likesdislikes{
+	background-color: transparent;
+	display: block;
+	width: 100%;
+}
+
+.likes{width: 100%;
+	background-color: white;
+	text-align: center;
+	min-height: 400px
+	}
+
+.dislikes{width: 100%;
+	background-color: black;
+	text-align: center;
+	color:black;
+	min-height: 400px;
+	margin-bottom:10px;
+	}
+
+.quote{
+	background: url("../images/forest.png");
+	background-size: cover;
+	font-size: 1em;
+	text-align: center;
+	font-family: 'Nova Mono';
+	color: white;
+	padding: 30px;
+	}
+
+.quote p{
+	margin-top: 10px;
+	width:90%;
+}
+
+.quote img{
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	margin-right: 30px;
+}
+
+#ed_ex{
+	padding-top: 0em;
+}
+
+#about{
+	padding-top: 0em;
+}
+
+#contact{
+	padding-top: 0em;
+}
+
+.ed_ex{
+	overflow: auto;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+
+}
+
+
+.education{width: 100%;
+	background-color: white;
+	text-align: center;
+	min-height: 400px
+	}
+
+.experience{width: 100%;
+	background-color: black;
+	text-align: center;
+	color:white;
+	min-height: 400px
+	}
+
+
+.instagram{
+	background: url(../images/totomobile.gif);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	color:white;
+	min-height: 750px;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 130px;
+	color: black;
+	margin-bottom: 0px;
+	line-height: 20px;
+	font-size: 2em;
+	}
+
+.instagram h1{
+	color: white;
+	font-size: 2em;
+	margin-left: 0px;
+	margin-top: 30px;
+	width: 100%;
+	text-shadow: 4px 4px #000;
+}
+
+.instagram img{
+	margin-left: 30px;}
+
+.instagram h2{
+	color: #fff;
+	font-size: .5em;
+	text-shadow: 2px 2px #000;
+	width: 100%;
+	text-align: center;
+	line-height: 0px;
+	margin-left: 20px;
+	margin-top: 200px;                       
+}
+
+.instagram a{
+	color: lightgreen;
+}
+
+.instagram p{
+	color: #5D5A65;
+	text-shadow: 2px 2px #000;
+	margin-top: 0px;
+	padding-left: 100px;
+	text-align: left;
+	line-height: 22px;
+	font-size: 22px;
+	clear: right;
+	display: block;
+}
+
+
+
+	/* Media Queries
+------------------------------------------*/
+
+@media screen and (min-width: 489px) {
+
+.quote{
+font-size: 1.7em;
+}
+
+}
+
+@media screen and (min-width: 789px) {
+	
+	nav ul{
+		display: none
+	}
+
+	button{
+		display: block;
+	}
+
+
+	nav {
+	 	background-color: transparent;
+	 	width: 70%;
+	 	height: 100%;
+	 	margin: 0 auto;
+	 	margin-bottom: 20px;
+	 	margin-top: 0px;
+	 	display:flex;
+	 	justify-content:space-around;
+	}
+
+
+	nav ul li {
+	  	
+	  	width:20%;
+	  	padding: .2em;
+	 /* 	margin-left: 30px;*/
+	}
+
+	nav ul li:first-child {
+		/*margin-left:0;*/
+	}
+
+
+.profile{
+	margin:0 auto;
+	max-width:960px;
+	margin-top: 50px;
+	margin-bottom: 300px;
+	padding-left: 30px;
+	padding-bottom: 10px;
+	background-color: #fdb4b5;
+	width:100%;
+	display:flex;
+	justify-content:space-between;
+	border-radius: 25px;
+	border:3px solid white;
+	}
+
+.leftprofile{
+	display: block;
+	margin-top: -30px;
+	padding: 0px;
+	width: 100%;
+	}
+
+.leftprofile img{
+	width: 400px;
+	padding-top: 20px;
+}
+
+.rightprofile{
+	width:100%;
+	padding: 0; 
+	background-color: transparent;
+	min-height: 100px;
+	color: black;
+	}
+
+	.rightprofile h1{
+		font-size: 1.8em;
+	}
+
+	.rightprofile h2{
+		font-size: 1em;
+	}
+
+	.rightprofile p{
+		font-size: .9em;
+	}
+
+.about{
+	max-width: 500px;
+	background-color: transparent;
+	padding: 0px 15px 0px 15px;
+	font-size: 1.4em;
+	}
+
+	.instagram{
+	background: url("http://1.bp.blogspot.com/-njEeuuXnuLY/U7bOilSpSYI/AAAAAAAAACk/d6752XSPf4A/s1600/totorogif_by_thatcrookedmind-d6jfewv.gif");
+	background-size: 120% 120%;
+	}
+
+	.quote{
+	font-size: 3em;
+	}
+
+	.quote img{
+		width: 250px;
+		height: 250px;
+		margin-top: 40px;
+	}
+
+	.maintitle h1{
+	text-align: center;
+	font-size: 5em;
+	color: #9FE92D;
+	margin-top: 30px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+}
+
+	.maintitle img{
+	margin-right: -35px;
+	}
+
+	.likesdislikes{
+		background-color: transparent;
+		display: flex;
+		justify-content:space-between;
+		width: 80%;
+		margin: 0 auto;
+		margin-top: 150px;
+		margin-bottom: 300px;
+		}
+
+	.likes{width: 40%;
+		background-color: #c8f28d;
+		border:solid 3px white;
+		text-align:center;
+		min-height: 300px;
+		padding-bottom:10px;
+		margin-bottom:0px;
+		border-radius: 25px;
+		}
+
+	.dislikes{width: 40%;
+		background-color:  #aed3ea;
+		border:solid 3px white;
+		padding-bottom: 10px;
+		min-height: 300px;
+		margin-top: 0px;
+		border-radius: 25px;
+		}
+
+	.dislikes p{
+		margin-top: -20px;
+	}
+
+	.ed_ex{
+		background-color: transparent;
+		display: flex;
+		justify-content:space-between;
+		width: 80%;
+		margin: 0 auto;
+		margin-top: 150px;
+		margin-bottom: 150px
+			}
+
+	.experience{width: 40%;
+		background-color: #ff9999;
+		color: black;
+		border:solid 3px white;
+		text-align:center;
+		min-height: 300px;
+		padding-bottom:10px;
+		border-radius: 25px;
+
+			}
+
+	.education{width: 40%;
+		background-color: #ffff99;
+		color: black;
+		border:solid 3px white;
+		padding-bottom: 10px;
+		min-height: 300px;
+		border-radius: 25px;
+
+			}
+}
+
+
+
